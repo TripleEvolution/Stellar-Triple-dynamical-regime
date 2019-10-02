@@ -3,8 +3,8 @@ import numpy as np
 from matplotlib.ticker import MultipleLocator, FormatStrFormatter
 
 
-plt.rc('font', size = 30)
-plt.rc('legend', fontsize = 25)
+plt.rc('font', size = 15)
+plt.rc('legend', fontsize = 12)
 
 
 
