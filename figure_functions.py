@@ -8,7 +8,7 @@ plt.rc('legend', fontsize = 12)
 
 
 
-def plot_figure(m1,m2,m3,e_in_max,incl,oct_limit,list_of_objects,period=False):
+def plot_figure(m1,m2,m3,e_in_max,incl,oct_limit,list_of_objects,PLOT_PERIOD_RATIO):
     
     #Object plotting stuff
     e_out_objects = []
@@ -49,7 +49,7 @@ def plot_figure(m1,m2,m3,e_in_max,incl,oct_limit,list_of_objects,period=False):
     ar_ss = 1. / (1-e_out_vec) * (5*np.pi * m3/(m1+m2)/np.sqrt(1-e_in_max))**(1./3.) 
     pr_ss = ar_ss**1.5 * np.sqrt(m_in/m_tot)
     
-    if period  == False:
+    if PLOT_PERIOD_RATIO  == False:
     
         plt.figure(figsize=(20,10))
         #to fix legend  duplicating red line
