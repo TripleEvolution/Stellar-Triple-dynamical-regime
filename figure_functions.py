@@ -108,27 +108,32 @@ def plot_figure(m1,m2,m3,e_in_max,incl,oct_limit,list_of_objects,PLOT_PERIOD_RAT
         
         alpha_kozai = 1
         
-        #    ar_kl_100 = (100**2 /alpha_kozai**2 * m3*m3/m_in/m_tot * (1-e_out_vec**2)**-3)**(1./3.)
+        ar_kl_100 = (100**2 /alpha_kozai**2 * m3*m3/m_in/m_tot * (1-e_out_vec**2)**-3)**(1./3.)
         ar_kl_1000 = (1000**2 /alpha_kozai**2 * m3*m3/m_in/m_tot * (1-e_out_vec**2)**-3)**(1./3.)
         ar_kl_10000 = (10000**2 /alpha_kozai**2 * m3*m3/m_in/m_tot * (1-e_out_vec**2)**-3)**(1./3.)
         ar_kl_100000 = (100000**2 /alpha_kozai**2 * m3*m3/m_in/m_tot * (1-e_out_vec**2)**-3)**(1./3.)
         ar_kl_1000000 = (1000000**2 /alpha_kozai**2 * m3*m3/m_in/m_tot * (1-e_out_vec**2)**-3)**(1./3.)
         
+        w_kl_100 = np.arange(len(e_out_vec))[ar_kl_100>ar_oct]
         w_kl_1000 = np.arange(len(e_out_vec))[ar_kl_1000>ar_oct]
         w_kl_10000 = np.arange(len(e_out_vec))[ar_kl_10000>ar_oct]
         w_kl_100000 = np.arange(len(e_out_vec))[ar_kl_100000>ar_oct]
         w_kl_1000000 = np.arange(len(e_out_vec))[ar_kl_1000000>ar_oct]
+
+        plt.semilogy(e_out_vec[w_kl_100], ar_kl_100[w_kl_100], color='0.6', ls=':', lw=2)
+        plt.annotate('$10^{2}P_{out}$',(e_out_vec[w_kl_100][0],ar_kl_100[w_kl_100][0]),fontsize=12,color='gray',textcoords='offset pixels',xytext=(0,5))
+        
         plt.semilogy(e_out_vec[w_kl_1000], ar_kl_1000[w_kl_1000], color='0.6', ls=':', lw=2)
-        plt.annotate('$10^{4}P_{out}$',(e_out_vec[w_kl_1000][0],ar_kl_1000[w_kl_1000][0]),fontsize=12,color='gray',textcoords='offset pixels',xytext=(0,5))
+        plt.annotate('$10^{3}P_{out}$',(e_out_vec[w_kl_1000][0],ar_kl_1000[w_kl_1000][0]),fontsize=12,color='gray',textcoords='offset pixels',xytext=(0,5))
       
         plt.semilogy(e_out_vec[w_kl_10000], ar_kl_10000[w_kl_10000], color='0.6', ls=':', lw=2)
-        plt.annotate('$10^{5}P_{out}$',(e_out_vec[w_kl_10000][0],ar_kl_10000[w_kl_10000][0]),fontsize=12,color='gray',textcoords='offset pixels',xytext=(0,5))
+        plt.annotate('$10^{4}P_{out}$',(e_out_vec[w_kl_10000][0],ar_kl_10000[w_kl_10000][0]),fontsize=12,color='gray',textcoords='offset pixels',xytext=(0,5))
         
         plt.semilogy(e_out_vec[w_kl_100000], ar_kl_100000[w_kl_100000], color='0.6', ls=':', lw=2)
-        plt.annotate('$10^{6}P_{out}$',(e_out_vec[w_kl_100000][0],ar_kl_100000[w_kl_100000][0]),fontsize=12,color='gray',textcoords='offset pixels',xytext=(0,5))
+        plt.annotate('$10^{5}P_{out}$',(e_out_vec[w_kl_100000][0],ar_kl_100000[w_kl_100000][0]),fontsize=12,color='gray',textcoords='offset pixels',xytext=(0,5))
         
         plt.semilogy(e_out_vec[w_kl_1000000], ar_kl_1000000[w_kl_1000000], color='0.6', ls=':', lw=2, label=r'LK timescale [$10^4,10^5,10^6,10^7]P_{\rmout}$')
-        plt.annotate('$10^{7}P_{out}$',(e_out_vec[w_kl_1000000][0],ar_kl_1000000[w_kl_1000000][0]),fontsize=12,color='gray',textcoords='offset pixels',xytext=(0,5))
+        plt.annotate('$10^{6}P_{out}$',(e_out_vec[w_kl_1000000][0],ar_kl_1000000[w_kl_1000000][0]),fontsize=12,color='gray',textcoords='offset pixels',xytext=(0,5))
     
         
         plt.errorbar(e_out_objects,a_ratio_objects,xerr=errors,fmt='o',ecolor='black',mfc='black',mec='black',capsize=5)
@@ -182,27 +187,32 @@ def plot_figure(m1,m2,m3,e_in_max,incl,oct_limit,list_of_objects,PLOT_PERIOD_RAT
         
         alpha_kozai = 1
         
+        pr_kl_100 = ((100**2 /alpha_kozai**2 * m3*m3/m_in/m_tot * (1-e_out_vec**2)**-3)**(1./3.))**1.5*np.sqrt(m_in/m_tot)
         pr_kl_1000 = ((1000**2 /alpha_kozai**2 * m3*m3/m_in/m_tot * (1-e_out_vec**2)**-3)**(1./3.))**1.5*np.sqrt(m_in/m_tot)
         pr_kl_10000 = ((10000**2 /alpha_kozai**2 * m3*m3/m_in/m_tot * (1-e_out_vec**2)**-3)**(1./3.))**1.5*np.sqrt(m_in/m_tot)
         pr_kl_100000 = ((100000**2 /alpha_kozai**2 * m3*m3/m_in/m_tot * (1-e_out_vec**2)**-3)**(1./3.))**1.5*np.sqrt(m_in/m_tot)
         pr_kl_1000000 = ((1000000**2 /alpha_kozai**2 * m3*m3/m_in/m_tot * (1-e_out_vec**2)**-3)**(1./3.))**1.5*np.sqrt(m_in/m_tot)
         
+        w_kl_100 = np.arange(len(e_out_vec))[pr_kl_100>pr_oct]
         w_kl_1000 = np.arange(len(e_out_vec))[pr_kl_1000>pr_oct]
         w_kl_10000 = np.arange(len(e_out_vec))[pr_kl_10000>pr_oct]
         w_kl_100000 = np.arange(len(e_out_vec))[pr_kl_100000>pr_oct]
         w_kl_1000000 = np.arange(len(e_out_vec))[pr_kl_1000000>pr_oct]
         
+        plt.semilogy(e_out_vec[w_kl_100], pr_kl_100[w_kl_100], color='0.6', ls=':', lw=2)
+        plt.annotate('$10^{2}P_{out}$',(e_out_vec[w_kl_100][0],pr_kl_100[w_kl_100][0]),fontsize=12,color='gray',textcoords='offset pixels',xytext=(0,5))
+
         plt.semilogy(e_out_vec[w_kl_1000], pr_kl_1000[w_kl_1000], color='0.6', ls=':', lw=2)
-        plt.annotate('$10^{4}P_{out}$',(e_out_vec[w_kl_1000][0],pr_kl_1000[w_kl_1000][0]),fontsize=12,color='gray',textcoords='offset pixels',xytext=(0,5))
+        plt.annotate('$10^{3}P_{out}$',(e_out_vec[w_kl_1000][0],pr_kl_1000[w_kl_1000][0]),fontsize=12,color='gray',textcoords='offset pixels',xytext=(0,5))
       
         plt.semilogy(e_out_vec[w_kl_10000], pr_kl_10000[w_kl_10000], color='0.6', ls=':', lw=2)
-        plt.annotate('$10^{5}P_{out}$',(e_out_vec[w_kl_10000][0],pr_kl_10000[w_kl_10000][0]),fontsize=12,color='gray',textcoords='offset pixels',xytext=(0,5))
+        plt.annotate('$10^{4}P_{out}$',(e_out_vec[w_kl_10000][0],pr_kl_10000[w_kl_10000][0]),fontsize=12,color='gray',textcoords='offset pixels',xytext=(0,5))
         
         plt.semilogy(e_out_vec[w_kl_100000],pr_kl_100000[w_kl_100000], color='0.6', ls=':', lw=2)
-        plt.annotate('$10^{6}P_{out}$',(e_out_vec[w_kl_100000][0],pr_kl_100000[w_kl_100000][0]),fontsize=12,color='gray',textcoords='offset pixels',xytext=(0,5))
+        plt.annotate('$10^{5}P_{out}$',(e_out_vec[w_kl_100000][0],pr_kl_100000[w_kl_100000][0]),fontsize=12,color='gray',textcoords='offset pixels',xytext=(0,5))
         
         plt.semilogy(e_out_vec[w_kl_1000000], pr_kl_1000000[w_kl_1000000], color='0.6', ls=':', lw=2, label=r'LK timescale [$10^4,10^5,10^6,10^7]P_{\rmout}$')
-        plt.annotate('$10^{7}P_{out}$',(e_out_vec[w_kl_1000000][0],pr_kl_1000000[w_kl_1000000][0]),fontsize=12,color='gray',textcoords='offset pixels',xytext=(0,5))
+        plt.annotate('$10^{6}P_{out}$',(e_out_vec[w_kl_1000000][0],pr_kl_1000000[w_kl_1000000][0]),fontsize=12,color='gray',textcoords='offset pixels',xytext=(0,5))
     
         a_ratio_objects = np.array(a_ratio_objects)
         p_ratio_objects = a_ratio_objects ** 1.5*np.sqrt(m_in/m_tot)
