@@ -39,7 +39,7 @@ def plot_figure(m1,m2,m3,e_in_max,incl,oct_limit,list_of_objects,PLOT_PERIOD_RAT
     colors = np.array(['b', 'g', 'r','c', 'm'])
     e_out_vec = np.arange(1000)/1000.
 
-    ar_stable = 2.8/(1-e_out_vec) * ( (1+q_out)*(1+e_out_vec)/np.sqrt(1-e_out_vec) )**0.4 *(1-0.3*np.pi/np.pi)
+    ar_stable = 2.8/(1-e_out_vec) * ( (1+q_out)*(1+e_out_vec)/np.sqrt(1-e_out_vec) )**0.4 *(1-0.3*incl/np.pi)
     pr_stable = ar_stable**1.5 * np.sqrt(m_in/m_tot)
 
     ar_oct = (m1-m2)/(m1+m2) *  e_out_vec/(1-e_out_vec**2) / oct_limit
