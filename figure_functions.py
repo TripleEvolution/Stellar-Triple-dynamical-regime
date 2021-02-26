@@ -8,7 +8,7 @@ plt.rc('legend', fontsize = 12)
 
 
 
-def plot_figure(m1,m2,m3,e_in_max,incl,oct_limit,list_of_objects,PLOT_PERIOD_RATIO):
+def plot_figure(m1,m2,m3,e_in_max,incl,oct_limit,list_of_objects,PLOT_PERIOD_RATIO, SAVE_FIG=False, fig_name='TRES_diagnostic.pdf'):
     
     #Object plotting stuff
     e_out_objects = []
@@ -117,6 +117,8 @@ def plot_figure(m1,m2,m3,e_in_max,incl,oct_limit,list_of_objects,PLOT_PERIOD_RAT
         plt.ylim((2, 1e4))
         
         plt.legend(bbox_to_anchor=[0.05, 1.],loc='upper left')
+        if SAVE_FIG:
+            plt.savefig(fig_name)
         plt.show()
         
     else:
@@ -191,6 +193,8 @@ def plot_figure(m1,m2,m3,e_in_max,incl,oct_limit,list_of_objects,PLOT_PERIOD_RAT
         plt.ylim((2, 1e6))
         
         plt.legend(bbox_to_anchor=[0.05, 1.],loc='upper left')
+        if SAVE_FIG:
+            plt.savefig(fig_name)
         plt.show()
         
 
