@@ -7,6 +7,38 @@ plt.rc('font', size = 15)
 plt.rc('legend', fontsize = 12)
 
 
+#based on Perets & Naoz 09, v1 on arxiv supplement D
+#g aka aop aka w aka argument of pericenter
+def find_e_max(i0, e0, g0):
+    X = (5*e0*e0*np.sin(g0)**2 + 2*(1-e0*e0)) *np.sin(i0)**2
+    Y = (1-e0*e0)*np.cos(i0)**2
+    
+    #solution for w=0
+    imax_w0 = np.arctan(np.sqrt(X/Y/2.))
+    emin_w0 = np.sqrt(1-Y/np.cos(imax_w0)**2)
+    
+    #solutions for w=pi/2                            
+    A = -3.
+    B = (1.-3.*Y+X)
+    C = 2.-2.*Y-X
+    D = B*B - 4.*A*C
+
+#            e2 = (-B +- np.sqrt(D))/2/A            
+    emin_1 = np.sqrt((-B + np.sqrt(D))/2/A)             
+    emin_2 = -1*np.sqrt((-B + np.sqrt(D))/2/A)             
+    emin_3 = np.sqrt((-B - np.sqrt(D))/2/A)             
+    emin_4 = -1*np.sqrt((-B - np.sqrt(D))/2/A)             
+    
+    emin = np.array([e0, emin_w0, emin_1, emin_2, emin_3, emin_4])
+#            print emin
+#            emax = max(emin)
+    emax = np.nanmax(emin, axis=0)
+    imin = np.arccos(np.sqrt((1-e0*e0)/(1-emax*emax) * np.cos(i0)**2))
+    return emax
+
+
+
+
 
 def plot_figure(m1,m2,m3,e_in_max,incl,oct_limit,list_of_objects,PLOT_PERIOD_RATIO, SAVE_FIG=False, fig_name='TRES_diagnostic.pdf'):
     
