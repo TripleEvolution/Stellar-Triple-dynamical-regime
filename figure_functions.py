@@ -183,7 +183,7 @@ def plot_figure(m1,m2,m3,e_in_max,incl,oct_limit,list_of_objects,PLOT_PERIOD_RAT
         max_ss_oct = np.maximum(pr_ss,pr_stable)
         plt.fill_between(e_out_vec[w_oct], max_ss_oct[w_oct], pr_oct[w_oct], alpha=0.1, color='k')
     
-        
+           
         
         alpha_kozai = 1
         
